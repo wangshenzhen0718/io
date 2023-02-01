@@ -10,7 +10,7 @@ import java.io.IOException;
  * @Version: 1.0
  * @Since: 1.0
  */
-public class FileCreate {
+public class FileCreate01 {
     public static void main(String[] args){
         //createFile01();
         //createFile02();
