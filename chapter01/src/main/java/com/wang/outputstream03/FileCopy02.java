@@ -1,4 +1,4 @@
-package com.wang.outputstream;
+package com.wang.outputstream03;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

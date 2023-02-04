@@ -1,4 +1,4 @@
-package com.wang.reader;
+package com.wang.reader04;
 
 import java.io.FileReader;
 import java.io.IOException;

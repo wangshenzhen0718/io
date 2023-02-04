@@ -1,4 +1,4 @@
-package com.wang.outputstream;
+package com.wang.outputstream03;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
