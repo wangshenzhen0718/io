@@ -22,7 +22,7 @@ public class FileCopy02 {
         int readLength=0;
         byte[] buf=new byte[8];
         //使用try-with-resources语句自动关闭
-        try(FileInputStream fileInputStream= new FileInputStream(source); FileOutputStream fileOutputStream = new FileOutputStream(target)){
+        try(FileInputStream fileInputStream= new FileInputStream(source); FileOutputStream fileOutputStream = new FileOutputStream(target,true)){
             while ((readLength=fileInputStream.read(buf))!=-1){
                 fileOutputStream.write(buf,0,readLength);
             }
