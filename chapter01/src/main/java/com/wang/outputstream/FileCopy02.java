@@ -7,7 +7,7 @@ import java.io.IOException;
 /**
  * @Author:wsz
  * @Date: 2023/2/4 19:00
- * @Description:文件拷贝（字符流读取写入综合）
+ * @Description:文件拷贝（字节流读取写入综合）
  * @Version: 1.0
  * @Since: 1.0
  */
