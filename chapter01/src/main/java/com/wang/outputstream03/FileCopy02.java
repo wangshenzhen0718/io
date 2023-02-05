@@ -24,6 +24,7 @@ public class FileCopy02 {
         //使用try-with-resources语句自动关闭
         try(FileInputStream fileInputStream= new FileInputStream(source); FileOutputStream fileOutputStream = new FileOutputStream(target,true)){
             while ((readLength=fileInputStream.read(buf))!=-1){
+                //流关闭之前操作的都是一个流对象，不会覆盖
                 fileOutputStream.write(buf,0,readLength);
             }
             System.out.println("拷贝成功！！！");
