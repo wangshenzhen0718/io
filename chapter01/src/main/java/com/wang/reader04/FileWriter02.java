@@ -6,7 +6,7 @@ import java.io.IOException;
 /**
  * @Author:wsz
  * @Date: 2023/2/4 21:15
- * @Description:FileReader字符流读取数据
+ * @Description:FileWriter字符流写入数据
  * @Version: 1.0
  * @Since: 1.0
  */
