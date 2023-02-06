@@ -1,4 +1,4 @@
-package com.wang.reader04;
+package com.wang.writer05;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import java.io.IOException;
  * @Version: 1.0
  * @Since: 1.0
  */
-public class FileWriter02 {
+public class FileWriter01 {
     public static void main(String[] args){
         readWriter01();
     }
