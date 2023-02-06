@@ -40,15 +40,16 @@ public class FileInputStream01 {
      */
     public static void readFile02(){
         String path = "e:\\hello.txt";
-        int read=0;
+        //读取到的字符串长度
+        int readLen=0;
         byte[] buf=new byte[8];
         //使用try-with-resources语句自动关闭
         try(FileInputStream fileInputStream= new FileInputStream(path)) {
             //从该输入流读取最多len字节的数据为字节数组。 如果len不为零，该方法将阻塞，直到某些输入可用; 否则，不会读取字节，并返回0 。
             //每次读取一个字符，一个中文3个字节，读取会乱码
-            while ((read=fileInputStream.read(buf))!=-1){
+            while ((readLen=fileInputStream.read(buf))!=-1){
                 //每次读取一个字符，一个中文3个字节，读取会乱码
-                System.out.print(new String(buf,0,read));
+                System.out.print(new String(buf,0,readLen));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
