@@ -2,6 +2,7 @@ package com.wang.p2_socket;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -30,11 +31,17 @@ public class E3_SocketTCP02_Server {
         byte[] buf = new byte[1024];
         int readLen = 0;
         while ((readLen = inputStream.read(buf)) != -1) {
-            System.out.println(new String(buf, 0, readLen));//根据读取到的实际长度，显示内容.
+            //根据读取到的实际长度，显示内容.
+            System.out.println(new String(buf, 0, readLen));
         }
+        OutputStream outputStream = socket.getOutputStream();
+        outputStream.write("hello client!!!".getBytes());
+        //   设置结束标记
+        socket.shutdownOutput();
         //5.关闭流和socket
         inputStream.close();
         socket.close();
         serverSocket.close();//关闭
+        outputStream.close();//关闭
     }
 }

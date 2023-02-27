@@ -20,7 +20,7 @@ public class E2_SocketTCP01Client {
         Socket socket = new Socket(InetAddress.getLocalHost(), 9999);
         System.out.println("客户端 socket返回=" + socket.getClass());
         //2. 连接上后，生成Socket, 通过socket.getOutputStream()
-        //   得到 和 socket对象关联的输出流对象
+        //3.得到 和 socket对象关联的输出流对象
         OutputStream outputStream = socket.getOutputStream();
         outputStream.write("hello server".getBytes());
         //4. 关闭流对象和socket, 必须关闭
