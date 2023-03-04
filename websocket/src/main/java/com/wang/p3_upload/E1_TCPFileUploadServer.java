@@ -30,7 +30,7 @@ public class E1_TCPFileUploadServer {
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
         writer.write("收到图片");
         writer.flush();//把内容刷新到数据通道
-        socket.shutdownOutput();//设置写入结束标记
+        socket.shutdownOutput();//设置写入结束标记，因为字节流的close会自动刷新 而字符流需要手动加入
 
         //关闭其他资源
         writer.close();
