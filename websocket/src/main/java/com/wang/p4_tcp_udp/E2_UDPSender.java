@@ -1,4 +1,4 @@
-package com.wang.p4_tcp_udp.help;
+package com.wang.p4_tcp_udp;
 
 import java.io.IOException;
 import java.net.*;
@@ -9,7 +9,7 @@ public class E2_UDPSender {
         DatagramSocket socket = new DatagramSocket(9998);
 
         //2. 将需要发送的数据，封装到 DatagramPacket对象
-        byte[] data = "hello 明天吃火锅~".getBytes(); //
+        byte[] data = "hello 明天吃火锅~".getBytes();
 
         //说明: 封装的 DatagramPacket对象 data 内容字节数组 , data.length , 主机(IP) , 端口
         DatagramPacket packet =
