@@ -1,5 +1,6 @@
 package com.wang.client.view;
 
+import com.wang.client.service.UserClientService;
 import com.wang.client.utils.Utility;
 
 /**
@@ -11,6 +12,7 @@ import com.wang.client.utils.Utility;
  */
 public class QQView {
     private boolean loop = true; //控制是否显示菜单
+    private UserClientService userClientService = new UserClientService();//对象是用于登录服务/注册用户
     private String key = ""; // 接收用户的键盘输入
     public static void main(String[] args){
         new QQView().mainMenu();
@@ -37,7 +39,7 @@ public class QQView {
                     String pwd = Utility.readString(50);
                     //这里就比较麻烦了, 需要到服务端去验证该用户是否合法
                     //这里有很多代码, 我们这里编写一个类 UserClientService[用户登录/注册]
-                    if (true) { //还没有写完, 先把整个逻辑打通....
+                    if (userClientService.checkUser(userId, pwd)) { //还没有写完, 先把整个逻辑打通....
                         System.out.println("===========欢迎 (用户 " + userId + " 登录成功) ===========");
                         //进入到二级菜单
                         while (loop) {
