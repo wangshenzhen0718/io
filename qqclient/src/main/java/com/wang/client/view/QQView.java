@@ -61,6 +61,9 @@ public class QQView {
                                     break;
                                 case "2":
                                     System.out.println("群发消息");
+                                    System.out.println("请输入想对大家说的话: ");
+                                    String s = Utility.readString(100);
+                                    messageClientService.sendMessageToAll(s, userId);
                                     break;
                                 case "3":
                                     System.out.println("私聊消息");
