@@ -62,7 +62,17 @@ public class ServerConnectClientThread extends Thread {
                     //退出线程
                     break;
 
-                } else {
+                }
+                else if (message.getMesType().equals(MessageType.MESSAGE_COMM_MES)) {
+                    //根据message获取getter id, 然后在得到对应先线程
+                    ServerConnectClientThread serverConnectClientThread =
+                            ManageClientThreads.getServerConnectClientThread(message.getGetter());
+                    //得到对应socket的对象输出流，将message对象转发给指定的客户端
+                    ObjectOutputStream oos =
+                            new ObjectOutputStream(serverConnectClientThread.getSocket().getOutputStream());
+                    oos.writeObject(message);//转发，提示如果客户不在线，可以保存到数据库，这样就可以实现离线留言
+
+                }else {
                     System.out.println("其他类型的message , 暂时不处理");
                 }
             } catch (Exception e) {
