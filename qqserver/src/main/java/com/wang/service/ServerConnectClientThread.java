@@ -6,6 +6,8 @@ import com.wang.common.MessageType;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * @Author:wsz
@@ -72,7 +74,27 @@ public class ServerConnectClientThread extends Thread {
                             new ObjectOutputStream(serverConnectClientThread.getSocket().getOutputStream());
                     oos.writeObject(message);//转发，提示如果客户不在线，可以保存到数据库，这样就可以实现离线留言
 
-                }else {
+                }else if (message.getMesType().equals(MessageType.MESSAGE_TO_ALL_MES)) {
+                    //需要遍历 管理线程的集合，把所有的线程的socket得到，然后把message进行转发即可
+                    HashMap<String, ServerConnectClientThread> hm = ManageClientThreads.getHm();
+
+                    Iterator<String> iterator = hm.keySet().iterator();
+                    while (iterator.hasNext()) {
+
+                        //取出在线用户id
+                        String onLineUserId = iterator.next().toString();
+
+                        if (!onLineUserId.equals(message.getSender())) {//排除群发消息的这个用户
+
+                            //进行转发message
+                            ObjectOutputStream oos =
+                                    new ObjectOutputStream(hm.get(onLineUserId).getSocket().getOutputStream());
+                            oos.writeObject(message);
+                        }
+
+                    }
+
+                } else {
                     System.out.println("其他类型的message , 暂时不处理");
                 }
             } catch (Exception e) {
