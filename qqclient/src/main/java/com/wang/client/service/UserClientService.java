@@ -83,4 +83,23 @@ public class UserClientService {
         }
 
     }
+
+    public void logout() {
+        Message message = new Message();
+        message.setMesType(MessageType.MESSAGE_CLIENT_EXIT);
+        message.setSender(u.getUserId());//一定要指定我是哪个客户端id
+
+        //发送message
+        try {
+            //ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+            ObjectOutputStream oos =
+                    new ObjectOutputStream(ManageClientConnectServerThread.getClientConnectServerThread(u.getUserId()).getSocket().getOutputStream());
+            oos.writeObject(message);
+            System.out.println(u.getUserId() + " 退出系统 ");
+            System.exit(0);//结束进程
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

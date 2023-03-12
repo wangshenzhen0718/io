@@ -16,6 +16,7 @@ public class QQView {
     private String key = ""; // 接收用户的键盘输入
     public static void main(String[] args){
         new QQView().mainMenu();
+        System.out.println("客户端退出系统！");
     }
 
 
@@ -66,7 +67,7 @@ public class QQView {
                                     System.out.println("发送文件");
                                     break;
                                 case "9":
-                                    System.out.println("退出系统");
+                                    userClientService.logout();
                                     loop = false;
                                     break;
                             }
