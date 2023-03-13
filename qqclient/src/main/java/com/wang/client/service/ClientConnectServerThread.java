@@ -3,6 +3,7 @@ package com.wang.client.service;
 import com.wang.common.Message;
 import com.wang.common.MessageType;
 
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 
@@ -41,6 +42,17 @@ public class ClientConnectServerThread extends Thread{
                 }else if (message.getMesType().equals(MessageType.MESSAGE_TO_ALL_MES)) {
                     //显示在客户端的控制台
                     System.out.println("\n" + message.getSender() + " 对大家说: " + message.getContent());
+                }else if (message.getMesType().equals(MessageType.MESSAGE_FILE_MES)) {//如果是文件消息
+                    //让用户指定保存路径。。。
+                    System.out.println("\n" + message.getSender() + " 给 " + message.getGetter()
+                            + " 发文件: " + message.getSrc() + " 到我的电脑的目录 " + message.getDest());
+
+                    //取出message的文件字节数组，通过文件输出流写出到磁盘
+                    FileOutputStream fileOutputStream = new FileOutputStream(message.getDest(), true);
+                    fileOutputStream.write(message.getFileBytes());
+                    fileOutputStream.close();
+                    System.out.println("\n 保存文件成功~");
+
                 }else {
                     System.out.println("是其他类型的message, 暂时不处理....");
                 }

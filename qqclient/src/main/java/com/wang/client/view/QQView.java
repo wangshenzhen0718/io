@@ -1,5 +1,6 @@
 package com.wang.client.view;
 
+import com.wang.client.service.FileClientService;
 import com.wang.client.service.MessageClientService;
 import com.wang.client.service.UserClientService;
 import com.wang.client.utils.Utility;
@@ -15,6 +16,7 @@ public class QQView {
     private boolean loop = true; //控制是否显示菜单
     private UserClientService userClientService = new UserClientService();//对象是用于登录服务/注册用户
     private MessageClientService messageClientService = new MessageClientService();//对象用户私聊/群聊.
+    private FileClientService fileClientService = new FileClientService();//该对象用户传输文件
     private String key = ""; // 接收用户的键盘输入
     public static void main(String[] args){
         new QQView().mainMenu();
@@ -76,6 +78,13 @@ public class QQView {
                                     break;
                                 case "4":
                                     System.out.println("发送文件");
+                                    System.out.print("请输入你想把文件发送给的用户(在线用户): ");
+                                    getterId = Utility.readString(50);
+                                    System.out.print("请输入发送文件的路径(形式 d:\\xx.jpg)");
+                                    String src = Utility.readString(100);
+                                    System.out.print("请输入把文件发送到对应的路径(形式 d:\\yy.jpg)");
+                                    String dest = Utility.readString(100);
+                                    fileClientService.sendFileToOne(src,dest,userId,getterId);
                                     break;
                                 case "9":
                                     userClientService.logout();
