@@ -94,6 +94,12 @@ public class ServerConnectClientThread extends Thread {
 
                     }
 
+                }else if (message.getMesType().equals(MessageType.MESSAGE_FILE_MES)) {
+                    //根据getter id 获取到对应的线程，将message对象转发
+                    ObjectOutputStream oos =
+                            new ObjectOutputStream(ManageClientThreads.getServerConnectClientThread(message.getGetter()).getSocket().getOutputStream());
+                    //转发
+                    oos.writeObject(message);
                 } else {
                     System.out.println("其他类型的message , 暂时不处理");
                 }
