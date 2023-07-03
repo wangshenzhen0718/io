@@ -12,8 +12,8 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private String userId;//用户Id/用户名
-    private String passwd;//用户密码
+    private String userId;
+    private String passwd;
 
     public User() {}
     public User(String userId, String passwd) {

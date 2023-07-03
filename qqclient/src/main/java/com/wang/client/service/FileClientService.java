@@ -10,9 +10,8 @@ import java.io.ObjectOutputStream;
 
 public class FileClientService {
     /**
-     *
-     * @param src 源文件
-     * @param dest 把该文件传输到对方的哪个目录
+     * @param src      源文件
+     * @param dest     把该文件传输到对方的哪个目录
      * @param senderId 发送用户id
      * @param getterId 接收用户id
      */
@@ -27,18 +26,19 @@ public class FileClientService {
         message.setDest(dest);
         //需要将文件读取
         FileInputStream fileInputStream = null;
-        byte[] fileBytes = new byte[(int)new File(src).length()];
+        byte[] fileBytes = new byte[(int) new File(src).length()];
 
         try {
             fileInputStream = new FileInputStream(src);
-            fileInputStream.read(fileBytes);//将src文件读入到程序的字节数组
+            //将src文件读入到程序的字节数组
+            fileInputStream.read(fileBytes);
             //将文件对应的字节数组设置message
             message.setFileBytes(fileBytes);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             //关闭
-            if(fileInputStream != null) {
+            if (fileInputStream != null) {
                 try {
                     fileInputStream.close();
                 } catch (IOException e) {

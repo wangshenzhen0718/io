@@ -10,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * @Author:wsz
  * @Date: 2023/3/11 21:06
@@ -24,7 +25,8 @@ public class QQServer {
     //ConcurrentHashMap 处理的线程安全,即线程同步处理, 在多线程情况下是安全
     private static ConcurrentHashMap<String, User> validUsers = new ConcurrentHashMap<>();
 
-    static { //在静态代码块，初始化 validUsers
+    //在静态代码块，初始化 validUsers
+    static {
 
         validUsers.put("100", new User("100", "123456"));
         validUsers.put("200", new User("200", "123456"));
@@ -43,8 +45,9 @@ public class QQServer {
             ss = new ServerSocket(9999);
             //启动推送新闻的线程
             new Thread(new SendNewsToAllService()).start();
-            while (true) { //当和某个客户端连接后，会继续监听, 因此while
-                 //如果没有客户端连接，就会阻塞在这里
+            //当和某个客户端连接后，会继续监听, 因此while
+            while (true) {
+                //如果没有客户端连接，就会阻塞在这里
                 Socket socket = ss.accept();
                 System.out.println("连接到了");
                 //得到socket关联的对象输入流
@@ -54,12 +57,12 @@ public class QQServer {
                 //得到socket关联的对象输出流
                 ObjectOutputStream oos =
                         new ObjectOutputStream(socket.getOutputStream());
-                User u = (User) ois.readObject();//读取客户端发送的User对象
+                //读取客户端发送的User对象
+                User u = (User) ois.readObject();
                 //创建一个Message对象，准备回复客户端
                 Message message = new Message();
-                //验证用户 方法
-                //验证用户 方法
-                if (checkUser(u.getUserId(), u.getPasswd())) {//登录通过
+                //登录通过
+                if (checkUser(u.getUserId(), u.getPasswd())) {
                     message.setMesType(MessageType.MESSAGE_LOGIN_SUCCEED.getCode());
                     //将message对象回复客户端
                     oos.writeObject(message);
@@ -71,7 +74,7 @@ public class QQServer {
                     //把该线程对象，放入到一个集合中，进行管理.
                     ManageClientThreads.addClientThread(u.getUserId(), serverConnectClientThread);
 
-                }else {
+                } else {
                     System.out.println("用户 id=" + u.getUserId() + " pwd=" + u.getPasswd() + " 验证失败");
                     message.setMesType(MessageType.MESSAGE_LOGIN_FAIL.getCode());
                     oos.writeObject(message);
@@ -95,21 +98,22 @@ public class QQServer {
         }
 
 
-
-
-
     }
 
-    //验证用户是否有效的方法
+    /**
+     * 验证用户是否有效的方法
+     **/
     private boolean checkUser(String userId, String passwd) {
         User user = validUsers.get(userId);
         //过关的验证方式
-        if(user == null) {//说明userId没有存在validUsers 的key中
-            return  false;
-        }
-        if(!user.getPasswd().equals(passwd)) {//userId正确，但是密码错误
+        //说明userId没有存在validUsers 的key中
+        if (user == null) {
             return false;
         }
-        return  true;
+        //userId正确，但是密码错误
+        if (!user.getPasswd().equals(passwd)) {
+            return false;
+        }
+        return true;
     }
 }
