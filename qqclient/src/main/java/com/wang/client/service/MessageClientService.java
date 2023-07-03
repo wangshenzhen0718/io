@@ -17,7 +17,7 @@ public class MessageClientService {
     public void sendMessageToOne(String content, String senderId, String getterId) {
         //构建message
         Message message = new Message();
-        message.setMesType(MessageType.MESSAGE_COMM_MES);//普通的聊天消息这种类型
+        message.setMesType(MessageType.MESSAGE_COMM_MES.getCode());//普通的聊天消息这种类型
         message.setSender(senderId);
         message.setGetter(getterId);
         message.setContent(content);
@@ -38,7 +38,7 @@ public class MessageClientService {
     public void sendMessageToAll(String content, String senderId) {
         //构建message
         Message message = new Message();
-        message.setMesType(MessageType.MESSAGE_TO_ALL_MES);//群发消息这种类型
+        message.setMesType(MessageType.MESSAGE_TO_ALL_MES.getCode());//群发消息这种类型
         message.setSender(senderId);
         message.setContent(content);
         message.setSendTime(new Date().toString());//发送时间设置到message对象

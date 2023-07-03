@@ -27,7 +27,7 @@ public class ClientConnectServerThread extends Thread{
                 //注意，后面我们需要去使用message
                 //判断这个message类型，然后做相应的业务处理
                 //如果是读取到的是 服务端返回的在线用户列表
-                if (message.getMesType().equals(MessageType.MESSAGE_RET_ONLINE_FRIEND)) {
+                if (message.getMesType().equals(MessageType.MESSAGE_RET_ONLINE_FRIEND.getCode())) {
                     //取出在线列表信息，并显示
                     //规定
                     String[] onlineUsers = message.getContent().split(" ");
@@ -35,14 +35,14 @@ public class ClientConnectServerThread extends Thread{
                     for (int i = 0; i < onlineUsers.length; i++) {
                         System.out.println("用户: " + onlineUsers[i]);
                     }
-                }else if (message.getMesType().equals(MessageType.MESSAGE_COMM_MES)) {//普通的聊天消息
+                }else if (message.getMesType().equals(MessageType.MESSAGE_COMM_MES.getCode())) {//普通的聊天消息
                     //把从服务器转发的消息，显示到控制台即可
                     System.out.println("\n" + message.getSender()
                             + " 对 " + message.getGetter() + " 说: " + message.getContent());
-                }else if (message.getMesType().equals(MessageType.MESSAGE_TO_ALL_MES)) {
+                }else if (message.getMesType().equals(MessageType.MESSAGE_TO_ALL_MES.getCode())) {
                     //显示在客户端的控制台
                     System.out.println("\n" + message.getSender() + " 对大家说: " + message.getContent());
-                }else if (message.getMesType().equals(MessageType.MESSAGE_FILE_MES)) {//如果是文件消息
+                }else if (message.getMesType().equals(MessageType.MESSAGE_FILE_MES.getCode())) {//如果是文件消息
                     //让用户指定保存路径。。。
                     System.out.println("\n" + message.getSender() + " 给 " + message.getGetter()
                             + " 发文件: " + message.getSrc() + " 到我的电脑的目录 " + message.getDest());

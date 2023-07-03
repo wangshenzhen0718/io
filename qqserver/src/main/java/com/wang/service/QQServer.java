@@ -60,7 +60,7 @@ public class QQServer {
                 //验证用户 方法
                 //验证用户 方法
                 if (checkUser(u.getUserId(), u.getPasswd())) {//登录通过
-                    message.setMesType(MessageType.MESSAGE_LOGIN_SUCCEED);
+                    message.setMesType(MessageType.MESSAGE_LOGIN_SUCCEED.getCode());
                     //将message对象回复客户端
                     oos.writeObject(message);
                     //创建一个线程，和客户端保持通信, 该线程需要持有socket对象
@@ -73,7 +73,7 @@ public class QQServer {
 
                 }else {
                     System.out.println("用户 id=" + u.getUserId() + " pwd=" + u.getPasswd() + " 验证失败");
-                    message.setMesType(MessageType.MESSAGE_LOGIN_FAIL);
+                    message.setMesType(MessageType.MESSAGE_LOGIN_FAIL.getCode());
                     oos.writeObject(message);
                     //关闭socket
                     socket.close();

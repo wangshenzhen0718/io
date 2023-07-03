@@ -23,7 +23,7 @@ public class SendNewsToAllService implements Runnable {
             //构建一个消息 , 群发消息
             Message message = new Message();
             message.setSender("服务器");
-            message.setMesType(MessageType.MESSAGE_TO_ALL_MES);
+            message.setMesType(MessageType.MESSAGE_TO_ALL_MES.getCode());
             message.setContent(news);
             message.setSendTime(new Date().toString());
             System.out.println("服务器推送消息给所有人 说: " + news);

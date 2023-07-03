@@ -20,7 +20,7 @@ public class FileClientService {
 
         //读取src文件  -->  message
         Message message = new Message();
-        message.setMesType(MessageType.MESSAGE_FILE_MES);
+        message.setMesType(MessageType.MESSAGE_FILE_MES.getCode());
         message.setSender(senderId);
         message.setGetter(getterId);
         message.setSrc(src);

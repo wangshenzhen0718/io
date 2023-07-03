@@ -39,7 +39,7 @@ public class UserClientService {
             //读取从服务器回复的Message对象
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
             Message ms = (Message) ois.readObject();
-            if (ms.getMesType().equals(MessageType.MESSAGE_LOGIN_SUCCEED)) {//登录OK
+            if (ms.getMesType().equals(MessageType.MESSAGE_LOGIN_SUCCEED.getCode())) {//登录OK
                 //创建一个和服务器端保持通信的线程-> 创建一个类 ClientConnectServerThread
                 ClientConnectServerThread clientConnectServerThread = new ClientConnectServerThread(socket);
                 //启动客户端的线程
@@ -64,7 +64,7 @@ public class UserClientService {
 
         //发送一个Message , 类型MESSAGE_GET_ONLINE_FRIEND
         Message message = new Message();
-        message.setMesType(MessageType.MESSAGE_GET_ONLINE_FRIEND);
+        message.setMesType(MessageType.MESSAGE_GET_ONLINE_FRIEND.getCode());
         message.setSender(u.getUserId());
 
         //发送给服务器
@@ -86,7 +86,7 @@ public class UserClientService {
 
     public void logout() {
         Message message = new Message();
-        message.setMesType(MessageType.MESSAGE_CLIENT_EXIT);
+        message.setMesType(MessageType.MESSAGE_CLIENT_EXIT.getCode());
         message.setSender(u.getUserId());//一定要指定我是哪个客户端id
 
         //发送message
