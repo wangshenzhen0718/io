@@ -37,19 +37,25 @@ public class NioGroupChatServer {
     System.out.println("监听线程: " + Thread.currentThread().getName());
     try {
       while (true) {
+          //单reactor单线程
+          //select通过一个阻塞对象监听多路连接请求
         int count = selector.select();
         if (count > 0) {
           Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
           while (iterator.hasNext()) {
             SelectionKey key = iterator.next();
 
+            //相当于事件分发器
             if (key.isAcceptable()) {
+                //如果是连接请求 就调用accept()建立连接
               SocketChannel socketChannel = serverSocketChannel.accept();
               socketChannel.configureBlocking(false);
               socketChannel.register(selector, SelectionKey.OP_READ);
               System.out.println(socketChannel.getRemoteAddress() + "   上线！！！");
             }
 
+            //连接以后 就会发送具体数据 做业务处理
+              //如果客户端很多在这里可能会阻塞
             if (key.isReadable()){
                 readData(key);
             }
