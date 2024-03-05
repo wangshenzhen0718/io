@@ -9,7 +9,7 @@ import java.io.File;
  * @Version: 1.0
  * @Since: 1.0
  */
-public class Directory03 {
+public class Demo03Directory {
     public static void main(String[] args){
       //m1();
       //m2();
