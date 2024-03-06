@@ -15,7 +15,7 @@ public class BufferedReader02 {
     public static void main(String[] args){
         String path="e:\\story.txt";
         String line;
-        //关闭处理流BufferedReader会自动关闭节点流FileReader
+        // 关闭处理流BufferedReader会自动关闭节点流FileReader
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
             while ((line=bufferedReader.readLine())!=null){
                 System.out.println(line);

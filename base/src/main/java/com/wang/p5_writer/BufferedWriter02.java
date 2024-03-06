@@ -8,8 +8,6 @@ import java.io.IOException;
  * @Author:wsz
  * @Date: 2023/2/7 21:23
  * @Description:BufferedWriter使用
- * @Version: 1.0
- * @Since: 1.0
  */
 public class BufferedWriter02 {
     public static void main(String[] args){
@@ -23,7 +21,6 @@ public class BufferedWriter02 {
             bufferedWriter.newLine();
             bufferedWriter.write("这是第三行");
             bufferedWriter.newLine();
-
         }catch (IOException e){
             e.printStackTrace();
         }
