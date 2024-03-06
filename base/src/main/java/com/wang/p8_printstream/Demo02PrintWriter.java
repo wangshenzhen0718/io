@@ -8,10 +8,8 @@ import java.io.PrintWriter;
  * @Author:wsz
  * @Date: 2023/2/11 14:28
  * @Description:演示PrintWriter使用方式
- * @Version: 1.0
- * @Since: 1.0
  */
-public class PrintWriter02 {
+public class Demo02PrintWriter {
     public static void main(String[] args) throws IOException {
         //PrintWriter writer =new PrintWriter(System.out);
         PrintWriter writer =new PrintWriter(new FileWriter("e:\\ww.txt"));

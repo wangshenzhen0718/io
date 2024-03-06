@@ -9,10 +9,8 @@ import java.io.IOException;
  * @Author:wsz
  * @Date: 2023/2/11 20:44
  * @Description:
- * @Version: 1.0
- * @Since: 1.0
  */
-public class HomeWork01 {
+public class Demo01HomeWork {
     public static void main(String[] args){
         /*(1)在判断e盘下是否有文件夹mytemp ,如果没有就创建mytemp
         (2)在e:\\mytemp目录下,创建文件hello.txt

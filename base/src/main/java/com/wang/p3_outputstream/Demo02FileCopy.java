@@ -8,10 +8,8 @@ import java.io.IOException;
  * @Author:wsz
  * @Date: 2023/2/4 19:00
  * @Description:文件拷贝（字节流读取写入综合）
- * @Version: 1.0
- * @Since: 1.0
  */
-public class FileCopy02 {
+public class Demo02FileCopy {
     public static void main(String[] args){
         copyFile();
     }
@@ -19,7 +17,7 @@ public class FileCopy02 {
     public static void copyFile(){
         String source = "e:\\hrm.jpg";
         String target = "e:\\hrm2.jpg";
-        int readLength=0;
+        int readLength;
         byte[] buf=new byte[8];
         //使用try-with-resources语句自动关闭
         try(FileInputStream fileInputStream= new FileInputStream(source); FileOutputStream fileOutputStream = new FileOutputStream(target,true)){

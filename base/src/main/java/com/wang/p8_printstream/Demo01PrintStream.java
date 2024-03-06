@@ -10,7 +10,7 @@ import java.io.PrintStream;
  * @Version: 1.0
  * @Since: 1.0
  */
-public class PrintStream01 {
+public class Demo01PrintStream {
     public static void main(String[] args) throws IOException {
         PrintStream out = System.out;
         //默认输出位置是标准输出 即显示器

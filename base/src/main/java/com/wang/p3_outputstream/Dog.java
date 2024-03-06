@@ -5,8 +5,6 @@ import java.io.Serializable;
  * @Author:wsz
  * @Date: 2023/2/9 21:41
  * @Description:公有Dog 用于序列化和反序列化
- * @Version: 1.0
- * @Since: 1.0
  */
 public class  Dog implements Serializable {
     private String name;

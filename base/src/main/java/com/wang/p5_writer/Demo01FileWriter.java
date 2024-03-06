@@ -7,20 +7,18 @@ import java.io.IOException;
  * @Author:wsz
  * @Date: 2023/2/4 21:15
  * @Description:FileWriter字符流写入数据
- * @Version: 1.0
- * @Since: 1.0
  */
-public class FileWriter01 {
-    public static void main(String[] args){
+public class Demo01FileWriter {
+    public static void main(String[] args) {
         readWriter01();
     }
 
     /**
-     *字符读取文件
-     * */
-    public static void readWriter01(){
+     * 字符读取文件
+     */
+    public static void readWriter01() {
 
-        String filePath="e:\\story.txt";
+        String filePath = "e:\\story.txt";
         try(FileWriter fileWriter = new FileWriter(filePath)){
             //数据写入完毕一定要关闭！！
             fileWriter.write("H");

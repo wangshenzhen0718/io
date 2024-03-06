@@ -9,7 +9,7 @@ import java.util.Scanner;
  * @Version: 1.0
  * @Since: 1.0
  */
-public class InputAndOutPut {
+public class Demo01InputAndOutPut {
     public static void main(String[] args){
         //System 类的 public final static InputStream in = null;
         //system.in 编译类型 InputStream

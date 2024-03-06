@@ -8,10 +8,8 @@ import java.io.IOException;
  * @Author:wsz
  * @Date: 2023/2/7 21:23
  * @Description:BufferedWriter使用
- * @Version: 1.0
- * @Since: 1.0
  */
-public class BufferedWriter02 {
+public class Demo02BufferedWriter {
     public static void main(String[] args){
       String path="e:\\a.txt";
         //new FileWriter(path,true)表示以覆盖的方式追加
@@ -23,7 +21,6 @@ public class BufferedWriter02 {
             bufferedWriter.newLine();
             bufferedWriter.write("这是第三行");
             bufferedWriter.newLine();
-
         }catch (IOException e){
             e.printStackTrace();
         }
